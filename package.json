@@ -1,0 +1,25 @@
+{
+  "name": "sk_template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/react": "^0.14.51",
+    "@types/react-dom": "^0.14.19",
+    "emojis-list": "^2.1.0",
+    "json5": "^0.5.1",
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1",
+    "sk_module_template": "nil84/sk_module_template"
+  },
+  "devDependencies": {
+    "loader-utils": "^0.2.16",
+    "source-map-loader": "^0.1.5",
+    "ts-loader": "^1.2.2"
+  }
+}
