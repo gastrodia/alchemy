@@ -2,24 +2,49 @@
   "name": "sk_template",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "author": "nilornot",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "cross-env NODE_ENV=dev supervisor -w server,app.js app",
+    "browsersync": "cross-env NODE_ENV=dev node app_browsersync",
+    "build": "webpack",
+    "production": "webpack --config webpack.production.config.js -p & cross-env NODE_ENV=production node app"
   },
-  "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/express": "^4.0.34",
+    "@types/node": "^0.0.2",
+    "@types/pixi.js": "^4.1.0",
     "@types/react": "^0.14.51",
     "@types/react-dom": "^0.14.19",
-    "emojis-list": "^2.1.0",
-    "json5": "^0.5.1",
+    "consolidate": "^0.14.5",
+    "ejs": "^2.5.2",
+    "express": "^4.14.0",
+    "pixi.js": "^4.2.3",
     "react": "^15.4.1",
-    "react-dom": "^15.4.1",
-    "sk_module_template": "nil84/sk_module_template"
+    "react-dom": "^15.4.1"
   },
   "devDependencies": {
     "loader-utils": "^0.2.16",
     "source-map-loader": "^0.1.5",
-    "ts-loader": "^1.2.2"
+    "ts-loader": "^1.2.2",
+    "webpack-dev-server": "^1.16.2",
+    "webpack-hot-middleware": "^2.13.2",
+    "browser-sync": "^2.18.2",
+    "chokidar": "^1.6.1",
+    "clean-webpack-plugin": "^0.1.14",
+    "cross-env": "^1.0.8",
+    "css-loader": "^0.23.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.8.5",
+    "node-sass": "^3.13.0",
+    "npm-install-webpack-plugin": "^2.0.2",
+    "reload": "^0.7.0",
+    "resolve-url-loader": "^1.6.0",
+    "sass-loader": "^3.2.3",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.3",
+    "webpack-dev-middleware": "^1.8.4"
   }
 }

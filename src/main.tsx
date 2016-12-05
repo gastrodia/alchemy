@@ -1,11 +1,11 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import { Hello } from "./components/Hello";
 
+import { PIXICanvas } from './components/PIXICanvas';
 
 
 ReactDOM.render(
-    <Hello compiler="TypeScript" framework="React" />,
-    document.getElementById("example")
+    <PIXICanvas />,
+    document.getElementById("draw")
 );

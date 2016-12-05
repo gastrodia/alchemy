@@ -1,8 +1,18 @@
+var webpack = require('webpack');
+var path = require('path');
+var publicPath = 'http://localhost:3000/';
+var hotMiddlewareScript = 'webpack-hot-middleware/client?reload=true';
+
 module.exports = {
-    entry: "./src/main.tsx",
+    //entry: "./src/main.tsx",
+    entry: [
+        "./src/main.tsx",
+        hotMiddlewareScript
+    ],
     output: {
         filename: "bundle.js",
-        path: __dirname + "/dist"
+        path: path.resolve(__dirname, './dist'),
+        publicPath: publicPath
     },
 
     // Enable sourcemaps for debugging webpack's output.
@@ -24,6 +34,11 @@ module.exports = {
             { test: /\.js$/, loader: "source-map-loader" }
         ]
     },
+    plugins: [
+        new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NoErrorsPlugin()
+    ],
 
     // When importing a module whose path matches one of the following, just
     // assume a corresponding global variable exists and use that instead.
