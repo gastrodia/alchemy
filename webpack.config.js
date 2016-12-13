@@ -4,6 +4,7 @@ var publicPath = 'http://localhost:3000/';
 var hotMiddlewareScript = 'webpack-hot-middleware/client?reload=true';
 
 
+
 module.exports = {
     //entry: "./src/main.tsx",
     entry: [

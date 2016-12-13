@@ -16,6 +16,23 @@ app.locals.reload = true;
 
 if (isDev) {
 
+    var path = require('path');
+    var chokidar = require('chokidar');
+    var DtsCreator = require('typed-css-modules');
+
+    chokidar.watch('src', {persistent: true}).on('all', (event, file) => {
+        
+        if (path.extname(file) == '.css') {
+            let creator = new DtsCreator();
+            creator.create(file).then(content => {
+                // console.log(content.tokens);          // ['myClass']
+                // console.log(content.formatted);       // 'export const myClass: string;'
+                content.writeFile();                  // writes this content to "src/style.css.d.ts"
+                console.log(file + '.d.ts  ' + 'updated!')
+         });
+        }
+    });
+
     // static assets served by webpack-dev-middleware & webpack-hot-middleware for development
     var webpack = require('webpack'),
         webpackDevMiddleware = require('webpack-dev-middleware'),
@@ -46,9 +63,12 @@ if (isDev) {
     var server = http.createServer(app);
     reload(server, app);
 
-    server.listen(port, function(){
+    server.listen(port, function () {
         console.log('App (dev) is now running on port 3000!');
     });
+
+
+
 } else {
 
     // static assets served by express.static() for production

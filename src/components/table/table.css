@@ -3,16 +3,20 @@
 }
 
 .table,
-.row,
-.cell{
+.row,  
+.cell{ 
     margin: 10px;
     overflow: hidden;
 }
 
 .table{
     border: 1px solid green;
-}
+} 
 
 .cell{
-    border: 1px solid #00f;padding: 10px;
+    border: 1px solid #00f;padding: 20px;
+}
+
+.some26{
+    background: red;
 }
