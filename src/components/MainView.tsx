@@ -3,7 +3,7 @@ import * as React from "react";
 import { Document } from '../core/entity/Document';
 import { Background } from './Background';
 import { TextViewer } from './TextViewer';
-
+import {Table} from './table/Table'
 export class MainView extends React.Component<any, any> {
     public get doc(): Document{
      return this.props.doc;   
@@ -18,6 +18,7 @@ export class MainView extends React.Component<any, any> {
             <div>
                 viewers
                 <Background />
+                <Table></Table>
             </div>
         );
     }
