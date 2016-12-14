@@ -1,0 +1,10 @@
+.mainView{
+    background:
+        -webkit-linear-gradient(top, transparent 19px,rgba(0, 0, 0, 0.45) 20px),
+        -webkit-linear-gradient(left, transparent 19px,rgba(0, 0, 0, 0.45) 20px)
+        ;
+    background-size: 20px 20px;
+
+    width: 100%;
+    height: 100%;
+}
