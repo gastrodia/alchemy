@@ -6,6 +6,23 @@ import * as ReactDOM from 'react-dom';
 var ContentEditable = require("react-contenteditable");
 var Draggable = require('react-draggable');
 
+
+
+class Menu extends React.Component<any, any> {
+    render() {
+        return <ul></ul>;
+    }
+}
+
+class Item extends React.Component<any, any>{
+    render() {
+        return <li></li>;
+    }
+}
+
+
+
+
 export class TextViewer extends React.Component<any, any> {
     public get entity(): TextEntity {
         return this.props.entity;
@@ -28,6 +45,7 @@ export class TextViewer extends React.Component<any, any> {
     }
 
 
+
     private handleChange() {
         return (evt: any) => {
             this.entity.text = evt.target.value
@@ -42,8 +60,6 @@ export class TextViewer extends React.Component<any, any> {
     private handleDrag() {
         return (evt: any) => {
             this.entity.position = this.getElementTranslate();
-            console.log(this.entity.position)
-
         }
     }
 
@@ -74,6 +90,53 @@ export class TextViewer extends React.Component<any, any> {
         }
     }
 
+    private handleContextMenu() {
+        return (evt: any) => {
+            this.openContextMenu();
+        }
+    }
+
+    private handleTransferClick(i:any){
+        return ()=>{
+            debugger;
+            var transfer = this.entity.transfers[i];
+            transfer.execute();
+        }
+    }
+
+    private _openedContextMenu: boolean = false;
+
+    private openContextMenu() {
+        this._openedContextMenu = true;
+        this.forceUpdate();
+    }
+
+    private closeContextMenu() {
+        this._openedContextMenu = false;
+        this.forceUpdate();
+    }
+
+    private getContextMenu() {
+        if (this._openedContextMenu) {
+
+            var items: Array<any> = [];
+            for (var i in this.entity.transfers) {
+                var transfer = this.entity.transfers[i];
+                items.push(
+                    <div key={transfer.id} onClick={this.handleTransferClick(i)}>{transfer.title}</div>
+                )
+            }
+            console.log(items);
+            return (
+                <div className={styles.menu}>
+                    <div>
+                        {items}
+                    </div>
+                </div>
+            );
+        }
+    }
+
     render() {
         return (
             <Draggable
@@ -87,7 +150,9 @@ export class TextViewer extends React.Component<any, any> {
                 onDrag={this.handleDrag()}
                 onStop={this.handleDragStop()}
                 >
-                <div className={styles.textviewer}>
+                <div className={styles.textviewer}
+                    onContextMenu={this.handleContextMenu()}
+                    >
                     <div className={styles.title}>
                         TextViewer
                     </div>
@@ -99,7 +164,10 @@ export class TextViewer extends React.Component<any, any> {
                         className={styles.body}
                         onMouseEnter={this.handleBodyMouseEnter()}
                         />
+                    {this.getContextMenu()}
                 </div>
+
+
             </Draggable>
         );
     }

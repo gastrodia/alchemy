@@ -13,6 +13,11 @@ export class MainView extends React.Component<any, any> {
     public get doc(): Document {
         return this.props.doc;
     };
+    // 禁用鼠标右键
+    private onContextMenu(evt: any) {
+        evt.preventDefault();
+    }
+
     render() {
         var viewers: Array<any> = [];
         var entitys = this.doc.entitys;
@@ -20,7 +25,7 @@ export class MainView extends React.Component<any, any> {
             viewers.push(<TextViewer entity={entitys[i]} key={entitys[i].id} />)
         }
         return (
-            <div className={styles.mainView}>
+            <div className={styles.mainView} onContextMenu={this.onContextMenu}>
                 {viewers}
                 <LinkLayer doc={this.doc}> </LinkLayer>
             </div>

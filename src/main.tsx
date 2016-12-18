@@ -18,6 +18,9 @@ var addBang = new core.TextTransfer(function(scope:core.TextTransfer){
     entity.text = outerText
     scope.outers.push(entity)
 })
+
+addBang.title = 'addBang';
+
 var sayHello = new core.TextTransfer(function(scope:core.TextTransfer){
      var entity = new core.TextEntity();
     var inerText = (scope.iners[0] as any).text;
@@ -25,6 +28,8 @@ var sayHello = new core.TextTransfer(function(scope:core.TextTransfer){
     entity.text = outerText;
     scope.outers.push(entity)
 })
+
+sayHello.title = 'sayHello';
 
 entity.transfers.push(addBang)
 entity.transfers.push(sayHello)
