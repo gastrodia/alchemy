@@ -15,3 +15,4 @@ blueprint3d/.vscode
 .idea
 *.orig
 /src/tools/svg/*.blend1
+.history

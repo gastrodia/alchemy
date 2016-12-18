@@ -15,7 +15,7 @@ export class MainView extends React.Component<any, any> {
     };
     render() {
         var viewers: Array<any> = [];
-        var entitys = this.doc.fetchEntity();
+        var entitys = this.doc.entitys;
         for (var i in entitys) {
             viewers.push(<TextViewer entity={entitys[i]} key={entitys[i].id} />)
         }
