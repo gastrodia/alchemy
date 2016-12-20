@@ -98,9 +98,9 @@ export class TextViewer extends React.Component<any, any> {
 
     private handleTransferClick(i:any){
         return ()=>{
-            debugger;
             var transfer = this.entity.transfers[i];
             transfer.execute();
+            this.closeContextMenu();
         }
     }
 

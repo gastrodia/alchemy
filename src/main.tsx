@@ -1,3 +1,4 @@
+
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
@@ -31,8 +32,8 @@ var sayHello = new core.TextTransfer(function(scope:core.TextTransfer){
 
 sayHello.title = 'sayHello';
 
-entity.transfers.push(addBang)
-entity.transfers.push(sayHello)
+entity.addTransfer(addBang)
+entity.addTransfer(sayHello)
 
 doc.entitys.push(entity);
 

@@ -1,8 +1,8 @@
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
-
+var publicPath = 'http://localhost:3000/';
 var productionConfig = [{
-   entry: [
+    entry: [
         "./src/main.tsx"
     ],
     output: {
@@ -22,7 +22,14 @@ var productionConfig = [{
     module: {
         loaders: [
             // All files with a '.ts' or '.tsx' extension will be handled by 'ts-loader'.
-            { test: /\.tsx?$/, loader: "ts-loader" }
+            { test: /\.tsx?$/, loader: "ts-loader" },
+            {
+                test: /\.css$/,
+                loaders: [
+                    'style?sourceMap',
+                    'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]'
+                ]
+            }
         ],
 
         preLoaders: [

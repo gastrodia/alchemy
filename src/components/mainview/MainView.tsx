@@ -9,6 +9,7 @@ import { LinkLayer } from '../linklayer/LinkLayer';
 import * as styles from './mainview.css';
 import { mainView } from './mainview.css';
 
+
 export class MainView extends React.Component<any, any> {
     public get doc(): Document {
         return this.props.doc;
@@ -17,6 +18,11 @@ export class MainView extends React.Component<any, any> {
     private onContextMenu(evt: any) {
         evt.preventDefault();
     }
+
+    constructor(){
+        super();
+    }
+    
 
     render() {
         var viewers: Array<any> = [];

@@ -1,10 +1,10 @@
 
-
+import {EventEmitter} from 'eventemitter3'
 export interface Runable{
     exec:Function;
 }
 
-export abstract class Entity implements Runable{
+export abstract class Entity extends EventEmitter implements Runable{
 
     static entityCount = 0;
 
@@ -50,4 +50,11 @@ export abstract class Entity implements Runable{
            this.outers[i].update();
        }
     };
+
+
+    public addTransfer(transfer:Entity){
+        transfer.iners.push(this);
+        this.outers.push(transfer);
+        this.transfers.push(transfer)
+    }
 }
