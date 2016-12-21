@@ -1,8 +1,7 @@
 import * as React from "react";
-import {TextEntity} from '../../core/entity/TextEntity'
-import {Document} from '../../core/entity/Document'
+import * as core from '../../core'
 export class LinkLayer extends React.Component<any, any> {
-    public get doc():Document{
+    public get doc():core.Document{
         return this.props.doc;
     } 
     render() {

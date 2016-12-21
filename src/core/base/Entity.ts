@@ -3,6 +3,7 @@ import {EventEmitter} from 'eventemitter3'
 export interface Runable{
     exec:Function;
 }
+import {Broadcast} from '../base/index'
 
 export abstract class Entity extends EventEmitter implements Runable{
 
@@ -17,6 +18,10 @@ export abstract class Entity extends EventEmitter implements Runable{
     }
     public set title(val){
         this._title = val;
+    }
+
+    public get boardcast(){
+        return Broadcast.getInstance();
     }
 
     public _type:string;

@@ -10,13 +10,13 @@ import * as components from './components'
 
 var doc = new core.Document();
 var entity = new core.TextEntity();
-entity.text = 'boy';
+entity.text.set('boy');
 
 var addBang = new core.TextTransfer(function(scope:core.TextTransfer){
     var entity = new core.TextEntity();
     var inerText = (scope.iners[0] as any).text;
     var outerText = inerText + '!';
-    entity.text = outerText
+    entity.text.set(outerText)
     scope.outers.push(entity)
 })
 
@@ -26,7 +26,7 @@ var sayHello = new core.TextTransfer(function(scope:core.TextTransfer){
      var entity = new core.TextEntity();
     var inerText = (scope.iners[0] as any).text;
     var outerText = 'hello, ' + inerText + '!';
-    entity.text = outerText;
+    entity.text.set(outerText);
     scope.outers.push(entity)
 })
 

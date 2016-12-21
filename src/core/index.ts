@@ -1,5 +1,6 @@
 
-export * from './entity/Document'
-export * from './entity/Entity'
+export * from './base'
+
 export * from './entity/TextEntity'
 export * from './transfer/TextTransfer'
+

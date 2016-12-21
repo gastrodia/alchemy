@@ -1,5 +1,5 @@
 import {TextEntity} from '../entity/TextEntity'
-import {Entity} from '../entity/Entity'
+import * as base from '../base'
 
 
 export class TextProperty{
@@ -19,7 +19,7 @@ export class TextTransferRecord{
     right:TextProperty;
 }
 
-export class TextTransfer extends Entity{
+export class TextTransfer extends base.Entity{
    constructor(exec:Function){
        super();
        this.exec = exec;

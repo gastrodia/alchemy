@@ -48,12 +48,12 @@ export class TextViewer extends React.Component<any, any> {
 
     private handleChange() {
         return (evt: any) => {
-            this.entity.text = evt.target.value
+            this.entity.text.set(evt.target.value)
         }
     }
 
-    private getTextContent() {
-        return this.entity.text
+    private getTextContent():string {
+        return this.entity.text.get()
     }
 
 

@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { Document } from '../../core/entity/Document';
+import * as core from '../../core';
 
 import { TextViewer } from '../textviewer/TextViewer';
 
@@ -11,7 +11,7 @@ import { mainView } from './mainview.css';
 
 
 export class MainView extends React.Component<any, any> {
-    public get doc(): Document {
+    public get doc(): core.Document {
         return this.props.doc;
     };
     // 禁用鼠标右键
@@ -21,6 +21,10 @@ export class MainView extends React.Component<any, any> {
 
     constructor(){
         super();
+
+        core.broadcast.on('redraw',()=>{
+            this.forceUpdate()
+        })
     }
     
 
