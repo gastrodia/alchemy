@@ -61,6 +61,7 @@ export class TextViewer extends React.Component<any, any> {
     private handleDrag() {
         return (evt: any) => {
             this.entity.position = this.getElementTranslate();
+            this.entity.boardcast.emit('entity-position-change');
         }
     }
 
@@ -73,6 +74,7 @@ export class TextViewer extends React.Component<any, any> {
     private handleDragStop() {
         return (evt: any) => {
             this.entity.position = this.getElementTranslate();
+            this.entity.boardcast.emit('entity-position-change');
             console.log(this.entity.position)
         }
     }
