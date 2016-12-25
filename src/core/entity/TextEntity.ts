@@ -1,12 +1,9 @@
 import * as base from '../base'
 
 export class TextEntity extends base.Entity{
-    public text = new base.Property('');
+    public text = '';
 
     constructor(){
         super();
-        this.text.onChange(()=>{
-            this.boardcast.emit('redraw');
-        })
     }
 }

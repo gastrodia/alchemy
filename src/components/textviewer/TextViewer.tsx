@@ -1,5 +1,6 @@
 import * as React from "react";
-import { TextEntity } from '../../core/entity/TextEntity'
+import * as core from '../../core'
+
 import * as styles from './textviewer.css'
 import * as ReactDOM from 'react-dom';
 
@@ -24,7 +25,7 @@ class Item extends React.Component<any, any>{
 
 
 export class TextViewer extends React.Component<any, any> {
-    public get entity(): TextEntity {
+    public get entity(): core.TextEntity {
         return this.props.entity;
     };
 
@@ -48,12 +49,12 @@ export class TextViewer extends React.Component<any, any> {
 
     private handleChange() {
         return (evt: any) => {
-            this.entity.text.set(evt.target.value)
+            this.entity.text = evt.target.value
         }
     }
 
     private getTextContent():string {
-        return this.entity.text.get()
+        return this.entity.text
     }
 
 
@@ -99,8 +100,10 @@ export class TextViewer extends React.Component<any, any> {
     private handleTransferClick(i:any){
         return ()=>{
             var transfer = this.entity.transfers[i];
+            transfer.target = this.entity;
             transfer.execute();
             this.closeContextMenu();
+            core.broadcast.emit('redraw');
         }
     }
 

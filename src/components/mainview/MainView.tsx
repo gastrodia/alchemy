@@ -26,14 +26,20 @@ export class MainView extends React.Component<any, any> {
             this.forceUpdate()
         })
     }
-    
+
+    private getTextViewers(viewers:Array<any>,entitys:Array<core.Entity>){
+        for (var i in entitys) {
+            var entity = entitys[i];
+            if(entity instanceof core.TextEntity){
+                viewers.push(<TextViewer entity={entity} key={entity.id} />)
+            }     
+            this.getTextViewers(viewers,entity.outers)
+        }  
+    }    
 
     render() {
         var viewers: Array<any> = [];
-        var entitys = this.doc.entitys;
-        for (var i in entitys) {
-            viewers.push(<TextViewer entity={entitys[i]} key={entitys[i].id} />)
-        }
+        this.getTextViewers(viewers,this.doc.entitys);
         return (
             <div className={styles.mainView} onContextMenu={this.onContextMenu}>
                 {viewers}

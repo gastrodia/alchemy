@@ -1,11 +1,10 @@
 
 import {EventEmitter} from 'eventemitter3'
-export interface Runable{
-    exec:Function;
-}
-import {Broadcast} from '../base/index'
 
-export abstract class Entity extends EventEmitter implements Runable{
+import {Broadcast} from '../base/index'
+import {Transfer} from './Transfer'
+
+export abstract class Entity extends EventEmitter{
 
     static entityCount = 0;
 
@@ -33,33 +32,19 @@ export abstract class Entity extends EventEmitter implements Runable{
     }
 
     public position: { x: number, y: number } = {x:0,y:0};
-    public transfers: Array<Entity> = [];
+    public transfers: Array<Transfer> = [];
 
     public id:number = Entity.entityCount ++;
 
-    public exec:Function;
-
-    private isRunable(){
-        return this.exec;
-    }
-
-    public execute(){
-        if(this.isRunable()){
-            this.exec(this);
-        }
-    }
 
     public update(){
-       this.execute();
-       for(var i in this.outers){
-           this.outers[i].update();
+       for(var i in this.transfers){
+           this.transfers[i].update();
        }
     };
 
 
-    public addTransfer(transfer:Entity){
-        transfer.iners.push(this);
-        this.outers.push(transfer);
+    public addTransfer(transfer:Transfer){
         this.transfers.push(transfer)
     }
 }

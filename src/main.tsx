@@ -10,24 +10,22 @@ import * as components from './components'
 
 var doc = new core.Document();
 var entity = new core.TextEntity();
-entity.text.set('boy');
+entity.text = 'boy';
 
-var addBang = new core.TextTransfer(function(scope:core.TextTransfer){
+var addBang = new core.TextTransfer(function(target:core.TextEntity){
     var entity = new core.TextEntity();
-    var inerText = (scope.iners[0] as any).text;
-    var outerText = inerText + '!';
-    entity.text.set(outerText)
-    scope.outers.push(entity)
+    entity.text = target.text+ '!';
+    entity.addTransfer(sayHello)
+    target.outers.push(entity)
 })
 
 addBang.title = 'addBang';
 
-var sayHello = new core.TextTransfer(function(scope:core.TextTransfer){
-     var entity = new core.TextEntity();
-    var inerText = (scope.iners[0] as any).text;
-    var outerText = 'hello, ' + inerText + '!';
-    entity.text.set(outerText);
-    scope.outers.push(entity)
+var sayHello = new core.TextTransfer(function(target:core.TextEntity){
+    var entity = new core.TextEntity();
+    entity.text = 'hello, ' + target.text+ '!';
+    entity.addTransfer(addBang)
+    target.outers.push(entity)
 })
 
 sayHello.title = 'sayHello';
