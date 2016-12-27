@@ -16,6 +16,8 @@ var addBang = new core.TextTransfer(function(target:core.TextEntity){
     var entity = new core.TextEntity();
     entity.text = target.text+ '!';
     entity.addTransfer(sayHello)
+    entity.position.x = target.position.x + target.size.width + 20;
+    entity.position.y = target.position.y + target.size.height + 20;
     target.outers.push(entity)
     entity.iners.push(target);
 })
@@ -26,6 +28,8 @@ var sayHello = new core.TextTransfer(function(target:core.TextEntity){
     var entity = new core.TextEntity();
     entity.text = 'hello, ' + target.text+ '!';
     entity.addTransfer(addBang)
+        entity.position.x = target.position.x + target.size.width + 20;
+    entity.position.y = target.position.y + target.size.height + 20;
     target.outers.push(entity)
     entity.iners.push(target)
 })

@@ -38,14 +38,22 @@ export class MainView extends React.Component<any, any> {
         }  
     }    
 
+    private handleClick(){
+        return ()=>{
+            (this.refs['contextmenu'] as any as ContextMenu).hide();
+        }
+    }
+
+    
+
     render() {
         var viewers: Array<any> = [];
         this.getTextViewers(viewers,this.doc.entitys);
         return (
-            <div className={styles.mainView} onContextMenu={this.onContextMenu}>
+            <div className={styles.mainView} onContextMenu={this.onContextMenu} onClick={this.handleClick()}>
                 {viewers}
                 <LinkLayer doc={this.doc}> </LinkLayer>
-                <ContextMenu></ContextMenu>
+                <ContextMenu ref="contextmenu"></ContextMenu>
             </div>
         );
     };
