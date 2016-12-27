@@ -32,6 +32,7 @@ export abstract class Entity extends EventEmitter{
     }
 
     public position: { x: number, y: number } = {x:0,y:0};
+    public size:{width:number,height:number} = {width:200,height:100};
     public transfers: Array<Transfer> = [];
 
     public id:number = Entity.entityCount ++;

@@ -29,8 +29,7 @@ export class TextViewer extends React.Component<any, any> {
         return this.props.entity;
     };
 
-    private width = 120;
-    private height = 58.2;
+
 
     private bodyEditable = false;
 

@@ -17,6 +17,7 @@ var addBang = new core.TextTransfer(function(target:core.TextEntity){
     entity.text = target.text+ '!';
     entity.addTransfer(sayHello)
     target.outers.push(entity)
+    entity.iners.push(target);
 })
 
 addBang.title = 'addBang';
@@ -26,6 +27,7 @@ var sayHello = new core.TextTransfer(function(target:core.TextEntity){
     entity.text = 'hello, ' + target.text+ '!';
     entity.addTransfer(addBang)
     target.outers.push(entity)
+    entity.iners.push(target)
 })
 
 sayHello.title = 'sayHello';
