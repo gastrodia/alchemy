@@ -1,0 +1,9 @@
+.menu {
+        width: 200px;
+        height: 400px;
+        background: #fff;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+        min-width: 230px;
+        min-height: 200px;
+        border-radius: 3px;
+}

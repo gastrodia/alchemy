@@ -6,6 +6,7 @@ import { TextViewer } from '../textviewer/TextViewer';
 
 import { Table } from '../table/Table';
 import { LinkLayer } from '../linklayer/LinkLayer';
+import {ContextMenu} from '../contextmenu/ContextMenu';
 import * as styles from './mainview.css';
 import { mainView } from './mainview.css';
 
@@ -44,6 +45,7 @@ export class MainView extends React.Component<any, any> {
             <div className={styles.mainView} onContextMenu={this.onContextMenu}>
                 {viewers}
                 <LinkLayer doc={this.doc}> </LinkLayer>
+                <ContextMenu></ContextMenu>
             </div>
         );
     };

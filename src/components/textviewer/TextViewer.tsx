@@ -94,52 +94,10 @@ export class TextViewer extends React.Component<any, any> {
 
     private handleContextMenu() {
         return (evt: any) => {
-            this.openContextMenu();
+            this.entity.boardcast.emit('open-entity-contextmenu',{entity:this.entity});
         }
     }
 
-    private handleTransferClick(i:any){
-        return ()=>{
-            var transfer = this.entity.transfers[i];
-            transfer.target = this.entity;
-            transfer.execute();
-            this.closeContextMenu();
-            core.broadcast.emit('redraw');
-        }
-    }
-
-    private _openedContextMenu: boolean = false;
-
-    private openContextMenu() {
-        this._openedContextMenu = true;
-        this.forceUpdate();
-    }
-
-    private closeContextMenu() {
-        this._openedContextMenu = false;
-        this.forceUpdate();
-    }
-
-    private getContextMenu() {
-        if (this._openedContextMenu) {
-
-            var items: Array<any> = [];
-            for (var i in this.entity.transfers) {
-                var transfer = this.entity.transfers[i];
-                items.push(
-                    <div key={transfer.id} onClick={this.handleTransferClick(i)}>{transfer.title}</div>
-                )
-            }
-            console.log(items);
-            return (
-                <div className={styles.menu}>
-                    <div>
-                        {items}
-                    </div>
-                </div>
-            );
-        }
-    }
 
     render() {
         return (
@@ -168,7 +126,7 @@ export class TextViewer extends React.Component<any, any> {
                         className={styles.body}
                         onMouseEnter={this.handleBodyMouseEnter()}
                         />
-                    {this.getContextMenu()}
+                    
                 </div>
 
 

@@ -1,1 +1,1 @@
-export default {};
+export const menu: string;
