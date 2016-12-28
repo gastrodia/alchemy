@@ -1,57 +1,100 @@
-
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-
-
+import Root from './containers/Root'
 import * as core from './core'
-import * as components from './components'
+
+// var doc = new core.Document();
+// var entity = new core.TextEntity();
+// entity.text = 'boy';
+
+// var addBang = new core.TextTransfer(function(target:core.TextEntity){
+//     var entity = new core.TextEntity();
+//     entity.text = target.text+ '!';
+//     entity.addTransfer(sayHello)
+//     entity.position.x = target.position.x + target.size.width + 20;
+//     entity.position.y = target.position.y + target.size.height + 20;
+//     target.outers.push(entity)
+//     entity.iners.push(target);
+// })
+
+// addBang.title = 'addBang';
+
+// var sayHello = new core.TextTransfer(function(target:core.TextEntity){
+//     var entity = new core.TextEntity();
+//     entity.text = 'hello, ' + target.text+ '!';
+//     entity.addTransfer(addBang)
+//         entity.position.x = target.position.x + target.size.width + 20;
+//     entity.position.y = target.position.y + target.size.height + 20;
+//     target.outers.push(entity)
+//     entity.iners.push(target)
+// })
+
+// sayHello.title = 'sayHello';
+
+// entity.addTransfer(addBang)
+// entity.addTransfer(sayHello)
+
+// doc.entitys.push(entity);
+
+ReactDOM.render(
+  <Root history={{}} />,
+  document.getElementById('main')
+)
 
 
+// import * as React from "react";
+// import * as ReactDOM from "react-dom";
 
-var doc = new core.Document();
-var entity = new core.TextEntity();
-entity.text = 'boy';
+// import * as core from './core'
+// import * as components from './components'
+// import * as  Immutable from 'immutable'
 
-var addBang = new core.TextTransfer(function(target:core.TextEntity){
-    var entity = new core.TextEntity();
-    entity.text = target.text+ '!';
-    entity.addTransfer(sayHello)
-    entity.position.x = target.position.x + target.size.width + 20;
-    entity.position.y = target.position.y + target.size.height + 20;
-    target.outers.push(entity)
-    entity.iners.push(target);
-})
+// import undoable from 'redux-undo';
 
-addBang.title = 'addBang';
+// var doc = new core.Document();
+// var entity = new core.TextEntity();
+// entity.text = 'boy';
 
-var sayHello = new core.TextTransfer(function(target:core.TextEntity){
-    var entity = new core.TextEntity();
-    entity.text = 'hello, ' + target.text+ '!';
-    entity.addTransfer(addBang)
-        entity.position.x = target.position.x + target.size.width + 20;
-    entity.position.y = target.position.y + target.size.height + 20;
-    target.outers.push(entity)
-    entity.iners.push(target)
-})
+// var addBang = new core.TextTransfer(function(target:core.TextEntity){
+//     var entity = new core.TextEntity();
+//     entity.text = target.text+ '!';
+//     entity.addTransfer(sayHello)
+//     entity.position.x = target.position.x + target.size.width + 20;
+//     entity.position.y = target.position.y + target.size.height + 20;
+//     target.outers.push(entity)
+//     entity.iners.push(target);
+// })
 
-sayHello.title = 'sayHello';
+// addBang.title = 'addBang';
 
-entity.addTransfer(addBang)
-entity.addTransfer(sayHello)
+// var sayHello = new core.TextTransfer(function(target:core.TextEntity){
+//     var entity = new core.TextEntity();
+//     entity.text = 'hello, ' + target.text+ '!';
+//     entity.addTransfer(addBang)
+//         entity.position.x = target.position.x + target.size.width + 20;
+//     entity.position.y = target.position.y + target.size.height + 20;
+//     target.outers.push(entity)
+//     entity.iners.push(target)
+// })
 
-doc.entitys.push(entity);
+// sayHello.title = 'sayHello';
+
+// entity.addTransfer(addBang)
+// entity.addTransfer(sayHello)
+
+// doc.entitys.push(entity);
 
 
 // var doc = new core.Document();
 // doc.loadJson(`{"_events":{},"_eventsCount":0,"iners":[],"outers":[],"position":{"x":0,"y":0},"size":{"width":200,"height":100},"transfers":[],"id":0,"entitys":[{"_events":{},"_eventsCount":0,"iners":[],"outers":[],"position":{"x":0,"y":0},"size":{"width":120,"height":58.2},"transfers":[{"id":0,"_title":"addBang"},{"id":1,"_title":"sayHello"}],"id":1,"text":"boy"}]}`);
 
 
-(window as any).doc = doc;
+// (window as any).doc = doc;
 
-ReactDOM.render(
-    <components.MainView doc={doc} />,
-    document.getElementById("main")
-);
+// ReactDOM.render(
+//     <components.MainView doc={doc} />,
+//     document.getElementById("main")
+// );
 
 
 // var scene = new THREE.Scene();
