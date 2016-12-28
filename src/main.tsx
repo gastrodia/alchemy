@@ -41,9 +41,15 @@ entity.addTransfer(sayHello)
 
 doc.entitys.push(entity);
 
+
+// var doc = new core.Document();
+// doc.loadJson(`{"_events":{},"_eventsCount":0,"iners":[],"outers":[],"position":{"x":0,"y":0},"size":{"width":200,"height":100},"transfers":[],"id":0,"entitys":[{"_events":{},"_eventsCount":0,"iners":[],"outers":[],"position":{"x":0,"y":0},"size":{"width":120,"height":58.2},"transfers":[{"id":0,"_title":"addBang"},{"id":1,"_title":"sayHello"}],"id":1,"text":"boy"}]}`);
+
+
 (window as any).doc = doc;
+
 ReactDOM.render(
-    <components.MainView doc={doc}/>,
+    <components.MainView doc={doc} />,
     document.getElementById("main")
 );
 
@@ -68,7 +74,7 @@ ReactDOM.render(
 //     //1
 //     cube.rotation.x = Math.PI/4;
 //     cube.rotation.y = Math.PI/4;
-    
+
 //     //2
 //     cube.rotateX(Math.PI/4);
 //     cube.rotateY(Math.PI/4);
@@ -91,7 +97,7 @@ ReactDOM.render(
 //     // cube.applyMatrix(matrix)
 //     // var euler = new THREE.Euler(Math.PI / 4, Math.PI / 4, 0, 'XYZ');
 //     // cube.setRotationFromEuler(euler);
-    
+
 
 //     renderer.render(scene, camera);
 // };

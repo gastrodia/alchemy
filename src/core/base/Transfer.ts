@@ -3,9 +3,20 @@ export class Transfer{
 
     static transferCount = 0;
 
-    protected exec: Function = function (scope: Transfer) {
+    private _exec : Function = function (scope: Transfer) {
         console.log('no nothing')
     };
+
+    private _execFunctionStr:string ;
+
+    public get exec(){
+        return this._exec;
+    }
+
+    public set exec(func:Function){
+        this._exec = func;
+        this._execFunctionStr = this._exec.toString()
+    }
 
     private _title: string;
     public get title(): string {
@@ -17,7 +28,7 @@ export class Transfer{
 
     public id: number = Transfer.transferCount++;
 
-    public _type: string;
+    public _type: string = (this as any).constructor.name;
     public get type(): string {
         return this._type || (this as any).constructor.name;
     }
@@ -33,4 +44,6 @@ export class Transfer{
     public update() {
         this.exec(this.target, this);
     };
+
+
 }

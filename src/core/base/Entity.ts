@@ -4,6 +4,8 @@ import {EventEmitter} from 'eventemitter3'
 import {Broadcast} from '../base/index'
 import {Transfer} from './Transfer'
 
+import * as CircularJSON from 'circular-json'
+
 export abstract class Entity extends EventEmitter{
 
     static entityCount = 0;
@@ -23,9 +25,9 @@ export abstract class Entity extends EventEmitter{
         return Broadcast.getInstance();
     }
 
-    public _type:string;
+    public _type:string = (this as any).constructor.name;
     public get type():string{
-        return this._type || (this as any).constructor.name;
+        return this._type ;
     }
     public set type(val){
         this._type = val;
@@ -37,7 +39,6 @@ export abstract class Entity extends EventEmitter{
 
     public id:number = Entity.entityCount ++;
 
-
     public update(){
        for(var i in this.transfers){
            this.transfers[i].update();
@@ -47,5 +48,17 @@ export abstract class Entity extends EventEmitter{
 
     public addTransfer(transfer:Transfer){
         this.transfers.push(transfer)
+    }
+
+
+    public toJson(){
+        return CircularJSON.stringify(this);
+    }
+
+    public loadJson(json:string){
+        var obj = CircularJSON.parse(json);
+        for(var key in obj){ 
+           (this as any)[key] = obj[key]
+        }
     }
 }

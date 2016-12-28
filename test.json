@@ -1,0 +1,50 @@
+{
+    "_events": {},
+    "_eventsCount": 0,
+    "iners": [],
+    "outers": [],
+    "_type": "Document",
+    "position": {
+        "x": 0,
+        "y": 0
+    },
+    "size": {
+        "width": 200,
+        "height": 100
+    },
+    "transfers": [],
+    "id": 0,
+    "entitys": [
+        {
+            "_events": {},
+            "_eventsCount": 0,
+            "iners": [],
+            "outers": [],
+            "_type": "TextEntity",
+            "position": {
+                "x": 0,
+                "y": 0
+            },
+            "size": {
+                "width": 120,
+                "height": 58.2
+            },
+            "transfers": [
+                {
+                    "id": 0,
+                    "_type": "TextTransfer",
+                    "_execFunctionStr": "function (target) {\n\t    var entity = new core.TextEntity();\n\t    entity.text = target.text + '!';\n\t    entity.addTransfer(sayHello);\n\t    entity.position.x = target.position.x + target.size.width + 20;\n\t    entity.position.y = target.position.y + target.size.height + 20;\n\t    target.outers.push(entity);\n\t    entity.iners.push(target);\n\t}",
+                    "_title": "addBang"
+                },
+                {
+                    "id": 1,
+                    "_type": "TextTransfer",
+                    "_execFunctionStr": "function (target) {\n\t    var entity = new core.TextEntity();\n\t    entity.text = 'hello, ' + target.text + '!';\n\t    entity.addTransfer(addBang);\n\t    entity.position.x = target.position.x + target.size.width + 20;\n\t    entity.position.y = target.position.y + target.size.height + 20;\n\t    target.outers.push(entity);\n\t    entity.iners.push(target);\n\t}",
+                    "_title": "sayHello"
+                }
+            ],
+            "id": 1,
+            "text": "boy"
+        }
+    ]
+}
