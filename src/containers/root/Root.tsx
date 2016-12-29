@@ -1,10 +1,9 @@
 import { Provider } from 'react-redux'
 import * as React from 'react'
 import { Component, PropTypes } from 'react'
-import configureStore from '../store/configureStore'
-const store: any = configureStore({})
-import * as components from '../components'
-import CounterPage from './CounterPage'
+import configureStore from '../../store/configureStore'
+import MainView from '../mainview/MainView'
+
 class MyProvider extends Provider {
 
 }
@@ -16,10 +15,9 @@ export default class Root extends Component<any, any> {
   };
 
   render() {
-
-
-    return (<Provider store={store} key="provider">
-      <CounterPage/>
+ const { history } = this.props
+    return (<Provider store={configureStore(history)} key="provider">
+      <MainView />
     </Provider>);
   }
 }

@@ -1,40 +1,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import Root from './containers/Root'
-import * as core from './core'
+import Root from './containers/root/Root'
 
-// var doc = new core.Document();
-// var entity = new core.TextEntity();
-// entity.text = 'boy';
-
-// var addBang = new core.TextTransfer(function(target:core.TextEntity){
-//     var entity = new core.TextEntity();
-//     entity.text = target.text+ '!';
-//     entity.addTransfer(sayHello)
-//     entity.position.x = target.position.x + target.size.width + 20;
-//     entity.position.y = target.position.y + target.size.height + 20;
-//     target.outers.push(entity)
-//     entity.iners.push(target);
-// })
-
-// addBang.title = 'addBang';
-
-// var sayHello = new core.TextTransfer(function(target:core.TextEntity){
-//     var entity = new core.TextEntity();
-//     entity.text = 'hello, ' + target.text+ '!';
-//     entity.addTransfer(addBang)
-//         entity.position.x = target.position.x + target.size.width + 20;
-//     entity.position.y = target.position.y + target.size.height + 20;
-//     target.outers.push(entity)
-//     entity.iners.push(target)
-// })
-
-// sayHello.title = 'sayHello';
-
-// entity.addTransfer(addBang)
-// entity.addTransfer(sayHello)
-
-// doc.entitys.push(entity);
 
 ReactDOM.render(
   <Root history={{}} />,

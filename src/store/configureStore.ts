@@ -1,4 +1,4 @@
-import rootReducer from '../reducers'
+import rootReducer from '../containers/root/reducers'
 import { createStore, applyMiddleware, compose } from 'redux'
 
 function createStoreWithMiddleware(reducer:any,initialState:any){
