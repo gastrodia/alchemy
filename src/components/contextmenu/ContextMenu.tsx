@@ -56,7 +56,7 @@ export class ContextMenu extends React.Component<any, any> {
         return (evt:any) => {
             evt.preventDefault();
             var transfer = this.entity.transfers[i];
-            transfer.target = this.entity;
+            transfer.targets = [this.entity];
             transfer.execute();
             this.closeContextMenu();
             core.broadcast.emit('redraw');

@@ -31,10 +31,12 @@ export class MainView extends React.Component<any, any> {
     private getTextViewers(viewers:Array<any>,entitys:Array<core.Entity>){
         for (var i in entitys) {
             var entity = entitys[i];
-            if(entity instanceof core.TextEntity){
+            if(entity.type == "text"){
                 viewers.push(<TextViewer entity={entity} key={entity.id} />)
             }     
-            this.getTextViewers(viewers,entity.outers)
+            if(entity.outers.length > 0){
+                this.getTextViewers(viewers,entity.outers)
+            }
         }  
     }    
 
@@ -42,6 +44,14 @@ export class MainView extends React.Component<any, any> {
         return ()=>{
             (this.refs['contextmenu'] as any as ContextMenu).hide();
         }
+    }
+
+    private handleUndoClick(){
+        core.broadcast.emit('undo');
+    }
+
+    private handleRedoClick(){
+        core.broadcast.emit('redo');
     }
 
     
@@ -54,6 +64,8 @@ export class MainView extends React.Component<any, any> {
                 {viewers}
                 <LinkLayer doc={this.doc}> </LinkLayer>
                 <ContextMenu ref="contextmenu"></ContextMenu>
+                <button onClick={this.handleUndoClick}>undo</button>
+                <button onClick={this.handleRedoClick}>redo</button>
             </div>
         );
     };

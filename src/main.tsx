@@ -9,6 +9,14 @@ ReactDOM.render(
 )
 
 
+import {EventEmitter} from 'eventemitter3'
+
+
+import * as CircularJSON from 'circular-json'
+import * as Immutable from 'immutable';
+
+var entityCount = 0;
+
 // import * as React from "react";
 // import * as ReactDOM from "react-dom";
 

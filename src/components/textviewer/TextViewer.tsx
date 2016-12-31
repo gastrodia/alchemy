@@ -8,24 +8,8 @@ var ContentEditable = require("react-contenteditable");
 var Draggable = require('react-draggable');
 
 
-
-class Menu extends React.Component<any, any> {
-    render() {
-        return <ul></ul>;
-    }
-}
-
-class Item extends React.Component<any, any>{
-    render() {
-        return <li></li>;
-    }
-}
-
-
-
-
 export class TextViewer extends React.Component<any, any> {
-    public get entity(): core.TextEntity {
+    public get entity(): core.Entity {
         return this.props.entity;
     };
 
@@ -44,16 +28,31 @@ export class TextViewer extends React.Component<any, any> {
         }
     }
 
+    public componentDidMount(){
+           var dom = ReactDOM.findDOMNode(this);
+           this.entity.size = {
+               width:dom.clientWidth,
+               height:dom.clientHeight
+           }
+           
+    }
 
+    public componentDitUpdate(){
+           var dom = ReactDOM.findDOMNode(this);
+           this.entity.size = {
+               width:dom.clientWidth,
+               height:dom.clientHeight
+           }
+    }
 
     private handleChange() {
         return (evt: any) => {
-            this.entity.text = evt.target.value
+            this.entity.info = evt.target.value
         }
     }
 
     private getTextContent():string {
-        return this.entity.text
+        return this.entity.info
     }
 
 

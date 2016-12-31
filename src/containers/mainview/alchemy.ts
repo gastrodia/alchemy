@@ -1,33 +1,39 @@
 
 import * as core from '../../core'
 function getInitialDocument() {
-    var doc = new core.Document();
-    var entity = new core.TextEntity();
-    entity.text = 'boy';
+    let doc = new core.Document();
+    let entity = new core.Entity();
+    entity.setType('text').setInfo('boy');
 
-    var addBang = new core.TextTransfer(function (target: core.TextEntity) {
-        var entity = new core.TextEntity();
-        entity.text = target.text + '!';
-        entity.addTransfer(sayHello)
-        entity.position.x = target.position.x + target.size.width + 20;
-        entity.position.y = target.position.y + target.size.height + 20;
-        target.outers.push(entity)
-        entity.iners.push(target);
-    })
+    var addBang = new core.Transfer();
+    addBang.setTitle('addBang').setExec(function (target) {
+        var result = target.breed().setInfo(target.info + '!').setPosition({
+            x:target.position.x + target.size.width + 20,
+            y:target.position.y + target.size.height + 20
+        }).addTransfer(sayHello);
+        target.on('info-change',function(){
+            result.info = target.info + '!';
+            result.boardcast.emit('redraw');
+        });
+        return [result]
+    });
 
     addBang.title = 'addBang';
-
-    var sayHello = new core.TextTransfer(function (target: core.TextEntity) {
-        var entity = new core.TextEntity();
-        entity.text = 'hello, ' + target.text + '!';
+    var sayHello = new core.Transfer('sayHello',function (...targets: Array<core.Entity>) {
+        var target = targets[0];
+        var entity = target.breed();
+        entity.info = 'hello, ' + target.info + '!';
         entity.addTransfer(addBang)
         entity.position.x = target.position.x + target.size.width + 20;
         entity.position.y = target.position.y + target.size.height + 20;
-        target.outers.push(entity)
-        entity.iners.push(target)
-    })
 
-    sayHello.title = 'sayHello';
+        target.on('info-change',function(){
+            entity.info = 'hello, ' + target.info + '!';
+            entity.boardcast.emit('redraw');
+        });
+
+        return [entity];
+    })
 
     entity.addTransfer(addBang)
     entity.addTransfer(sayHello)
