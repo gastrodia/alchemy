@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 //import counter from '../counter/counter'
-import alchemy from '../mainview/alchemy'
+import * as alchemy from '../mainview/alchemy'
 // import {
 //   INCREMENT_COUNTER, DECREMENT_COUNTER,
 //   UNDO_COUNTER, REDO_COUNTER
@@ -11,7 +11,7 @@ import {
 } from '../mainview/alchemy'
 import undoable, { includeAction } from 'redux-undo'
 
-const rootReducer = combineReducers({
+const rootReducer:any = combineReducers({
   // counter: undoable(counter, {
   //   filter: includeAction([INCREMENT_COUNTER, DECREMENT_COUNTER]),
   //   limit: 10,
@@ -19,7 +19,7 @@ const rootReducer = combineReducers({
   //   undoType: UNDO_COUNTER,
   //   redoType: REDO_COUNTER
   // }),
-  doc:undoable(alchemy,{
+  doc:undoable(alchemy as any,{
     filter: includeAction([INCREMENT_COUNTER, DECREMENT_COUNTER]),
     limit: 10,
     debug: true,
