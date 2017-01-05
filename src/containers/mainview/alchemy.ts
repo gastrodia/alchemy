@@ -44,7 +44,9 @@ function getInitialDocument() {
 
 const initialState = getInitialDocument();
 
-
+export default function counter(state:any = initialState, action: any) {
+    return state;
+}
 
 export const _INIT_ACTION = /@@redux*/;
 

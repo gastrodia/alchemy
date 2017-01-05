@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 //import counter from '../counter/counter'
-import * as alchemy from '../mainview/alchemy'
+import  alchemy from '../mainview/alchemy'
 // import {
 //   INCREMENT_COUNTER, DECREMENT_COUNTER,
 //   UNDO_COUNTER, REDO_COUNTER
