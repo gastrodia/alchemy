@@ -1,20 +1,25 @@
 {
   "name": "alchemy-framework",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "",
   "author": "nilornot",
-  "main": "./build/index.js",
-  "types": "./build/index.d.ts",
+  "main": "./es5/alchemy-commonjs.js",
   "typescript": {
-    "definition": "./build/index.d.ts"
+    "definition": "./es5/build/index.d.ts"
   },
   "scripts": {
     "start": "cross-env NODE_ENV=dev supervisor -w server,app.js app",
     "browsersync": "cross-env NODE_ENV=dev node app_browsersync",
     "build": "webpack",
     "production": "webpack --config webpack.production.config.js -p & cross-env NODE_ENV=production node app",
-    "prepublish": "tsc"
+    "prepublish": "cpx \"src/**/*.css\" build"
   },
+  "publishConfig": {
+    "registry": "http://192.168.0.31:8081/repository/skong-npm-release/"
+  },
+  "files": [
+    "es5"
+  ],
   "license": "ISC",
   "dependencies": {
     "@types/circular-json": "^0.1.30",
@@ -49,6 +54,8 @@
     "browser-sync": "^2.18.2",
     "chokidar": "^1.6.1",
     "clean-webpack-plugin": "^0.1.14",
+    "copy-webpack-plugin": "^4.0.1",
+    "cpx": "^1.5.0",
     "cross-env": "^1.0.8",
     "css-loader": "^0.23.1",
     "file-loader": "^0.8.5",

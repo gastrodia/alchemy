@@ -11,7 +11,9 @@ _.assign(commonjsconfig, {
   entry:      "./src/index.ts",
   externals: [
     "react",
-    /^react\/lib\/.+/  // any require that refers to internal react modules
+    /^react\/lib\/.+/,
+    "redux",
+    "^redux\/lib\/.+"  // any require that refers to internal react modules
   ]
 });
 _.assign(commonjsconfig.output, {
@@ -20,5 +22,6 @@ _.assign(commonjsconfig.output, {
   library: "alchemy-framework",
   filename: "alchemy-commonjs.js"
 });
+
 
 module.exports = commonjsconfig;

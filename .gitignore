@@ -16,3 +16,4 @@ blueprint3d/.vscode
 *.orig
 /src/tools/svg/*.blend1
 .history
+es5

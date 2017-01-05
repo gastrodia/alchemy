@@ -8,7 +8,7 @@ class MyProvider extends Provider {
 
 }
 
-export default class Root extends Component<any, any> {
+export class Root extends Component<any, any> {
 
   static propTypes = {
     history: PropTypes.object.isRequired

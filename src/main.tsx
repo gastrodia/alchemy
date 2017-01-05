@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import Root from './containers/root/Root'
+import {Root} from './containers/root/Root'
 
 
 ReactDOM.render(
