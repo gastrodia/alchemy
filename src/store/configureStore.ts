@@ -5,7 +5,7 @@ function createStoreWithMiddleware(reducer:any,initialState:any){
     return createStore(reducer,initialState)
 }
 
-export default function configureStore (initialState:any) {
+export default function configureStore (initialState:any):any {
   const store = createStoreWithMiddleware(rootReducer, initialState);
   (window as any).store = store;
   return store
