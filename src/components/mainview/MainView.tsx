@@ -31,9 +31,13 @@ export class MainView extends React.Component<any, any> {
     private getTextViewers(viewers:Array<any>,entitys:Array<core.Entity>){
         for (var i in entitys) {
             var entity = entitys[i];
-            if(entity.type == "text"){
-                viewers.push(<TextViewer entity={entity} key={entity.id} />)
-            }     
+            var Component:any  = core.componentMrg.getComponentByType(entity.type);
+            //if(entity.type == "text"){
+                if(Component){
+                     viewers.push(<Component entity={entity} key={entity.id} />)
+                }
+               
+            //}     
             if(entity.outers.length > 0){
                 this.getTextViewers(viewers,entity.outers)
             }

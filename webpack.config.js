@@ -9,7 +9,8 @@ module.exports = {
     //entry: "./src/main.tsx",
     entry: [
         "./src/main.tsx",
-        hotMiddlewareScript
+        hotMiddlewareScript,
+        'webpack/hot/dev-server'
     ],
     output: {
         filename: "bundle.js",

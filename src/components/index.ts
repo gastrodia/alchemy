@@ -1,5 +1,8 @@
 export * from './linklayer/LinkLayer'
 export * from './mainview/MainView';
 export * from './table/Table';
-export * from './textviewer/TextViewer';
+import {TextViewer} from './textviewer/TextViewer';
 
+
+import * as core from '../core'
+core.componentMrg.register('text',TextViewer);

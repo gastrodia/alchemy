@@ -1,6 +1,6 @@
-var express = require('express'),
-    path = require('path'),
-    consolidate = require('consolidate');
+var express = require('express');
+var path = require('path');
+var consolidate = require('consolidate');
 
 var isDev = process.env.NODE_ENV !== 'production';
 var app = express();
