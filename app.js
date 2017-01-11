@@ -34,12 +34,15 @@ if (isDev) {
     });
 
     // static assets served by webpack-dev-middleware & webpack-hot-middleware for development
-    var webpack = require('webpack'),
-        webpackDevMiddleware = require('webpack-dev-middleware'),
-        webpackHotMiddleware = require('webpack-hot-middleware'),
-        webpackDevConfig = require('./webpack.config.js');
+    var webpack = require('webpack');
+    var webpackDevMiddleware = require('webpack-dev-middleware');
+    var webpackHotMiddleware = require('webpack-hot-middleware');
+    // var webpackDevConfig = require('./webpack.config.js');
+    // var compiler = webpack(webpackDevConfig);
 
+    var webpackDevConfig = require('./webpack-commonjs.config.js');
     var compiler = webpack(webpackDevConfig);
+
 
     // attach to the compiler & the server
     app.use(webpackDevMiddleware(compiler, {
